@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>چت‌یار — لیست انتظار هوشمند فارسی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F4F4F2; --surface: #FFFFFF; --text: #0A0A0A; --muted: #6B6B6B; --stroke: #E2E2E0; --inverse: #0A0A0A;
+    }
+    [data-theme="dark"] {
+      --bg: #0A0A0A; --surface: #1A1A1A; --text: #F4F4F2; --muted: #A0A0A0; --stroke: #333; --inverse: #F4F4F2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Vazirmatn", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: background 0.2s, color 0.2s; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--stroke); }
+    h1 { font-size: 2.5rem; font-weight: 800; margin: 2rem 0 1rem; }
+    .hero { text-align: center; padding: 3rem 0; }
+    .btn { background: var(--inverse); color: var(--bg); border: none; padding: 0.8rem 2rem; border-radius: 4px; font-weight: 700; cursor: pointer; font-family: inherit; }
+    .btn:hover { opacity: 0.9; }
+    form { display: flex; gap: 0.5rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+    input { padding: 0.8rem; border: 1px solid var(--stroke); border-radius: 4px; font-family: inherit; background: var(--surface); color: var(--text); min-width: 250px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+    .card { background: var(--surface); padding: 1.5rem; border: 1px solid var(--stroke); border-radius: 8px; }
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--stroke); margin-top: 3rem; color: var(--muted); }
+    .theme-toggle { background: none; border: 1px solid var(--stroke); padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; color: var(--text); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <strong>چت‌یار</strong>
+      <button class="theme-toggle" onclick="toggleTheme()">تم تاریک/روشن</button>
+    </header>
+    <section class="hero">
+      <h1>چت‌یار هوشمند فارسی</h1>
+      <p>دستیار مکالمه‌محور با دانش فارسی عمیق، حفاظت حریم خصوصی و پاسخگویی دقیق.</p>
+      <form onsubmit="event.preventDefault(); alert('ثبت‌نام شد! به‌زودی خبرتان می‌کنیم.');">
+        <input type="email" placeholder="ایمیل شما" required>
+        <button class="btn" type="submit">عضویت در لیست انتظار</button>
+      </form>
+      <p style="color: var(--muted); font-size: 0.9rem;">بیش از ۱۲۰۰ نفر قبلاً ثبت‌نام کرده‌اند.</p>
+    </section>
+    <section class="features">
+      <div class="card"><h3>دانش فارسی عمیق</h3><p>درک متن‌های پیچیده فارسی و اصطلاحات محلی.</p></div>
+      <div class="card"><h3>حفاظت حریم خصوصی</h3><p>داده‌ها در ایران پردازش می‌شوند. بدون ذخیره خارجی.</p></div>
+      <div class="card"><h3>پاسخگویی سریع</h3><p>زیر ۲ ثانیه برای سؤالات روزمره و تخصصی.</p></div>
+    </section>
+    <footer>
+      <p>© ۱۴۰۵ چت‌یار | ساخته‌شده با One-Page Studio</p>
+    </footer>
+  </div>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      html.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+      localStorage.setItem('theme', html.getAttribute('data-theme'));
+    }
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+</body>
+</html>
